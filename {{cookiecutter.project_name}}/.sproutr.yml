@@ -1,0 +1,17 @@
+git:
+    add($pattern):
+        DO: poetry run git add $pattern
+        AFTER: poetry run pre-commit
+
+    commit($message):
+        BEFORE: poetry run pre-commit
+        DO: poetry run git commit -m $pattern
+
+    push:
+        DO: poetry run git push
+
+{{cookiecutter.project_name}}:
+    test:
+        DO: poetry run pytest
+
+
